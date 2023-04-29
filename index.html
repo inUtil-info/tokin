@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - step by step form (Vanilla JS)</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<form id="stepByStepForm" class="form">
+   <ul class="progress-bar">
+      <li class="progress-bar__dot full"></li>
+      <li class="progress-bar__connector"></li>
+      <li class="progress-bar__dot"></li>
+      <li class="progress-bar__connector"></li>
+      <li class="progress-bar__dot"></li>
+   </ul>
+
+   <div class="step step1">
+      <div class="input-group">
+         <label for="tokin">Token</label>
+         <input type="text" placeholder="Ingrese su token" name="tokin" id="tokin">
+      </div>
+      <p>Obtén un token <a href="https://wa.me/34631428039?text=get-token" target="_blank">aquí</a></p>
+    </div>
+    
+
+   <div class="step step2 hidden">
+      <div class="input-group">
+         <label for="tu-numero">Tu número</label>
+         <input type="text" placeholder="este es tu número" name="tu-numero" id="tu-numero">
+      </div>
+      <div class="input-group">
+         <label for="numero-a-consultar">Número a consultar</label>
+         <input type="text" placeholder="Ingrese el número a consultar" name="numero-a-consultar" id="numero-a-consultar">
+      </div>
+   </div>
+   
+
+   <div class="step step3 hidden">
+      <div class="input-group">
+         <label for="numero-a-consultar">Número a consultar</label>
+         <input type="text" placeholder="Ingrese el número a consultar" name="numero-a-consultar" id="numero-a-consultar">
+      </div>
+      <div class="input-group" style="display:flex; flex-direction: row; flex: 1;">
+         <input type="checkbox" name="condiciones-de-uso" id="condiciones-de-uso" style="flex: 0 0 10%;">
+         <label for="condiciones-de-uso" style="flex: 1;">Acepto las condiciones de uso</label>
+      </div>
+    </div>
+    
+   
+
+   <div class="button-group">
+      <button id="previous" class="disabled button" disabled>
+         previous
+      </button>
+      <button id="next" class="button">
+         next
+      </button>
+   </div>
+   <div class="button-group">
+      <button id="validate" type="submit" class="hidden button">
+         Submit
+   </button>
+   </div>
+
+</form>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
