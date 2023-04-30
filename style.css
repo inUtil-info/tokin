@@ -2,6 +2,10 @@ html {
   background-color: #A2C7E5;
 }
 
+body {
+  font-family: "Raleway", sans-serif;
+}
+
 .hidden {
   display: none;
 }
