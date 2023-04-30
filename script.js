@@ -26,6 +26,7 @@ function goNext(e) {
   }
 
   currentStep += 1
+
   goToStep(currentStep)
 }
 
@@ -62,8 +63,8 @@ function goToStep(stepNumber){
   
   //if we reached final step
   if(currentStep === numberOfSteps){
-    enable(previousButton)
-    disable(nextButton)
+    hide(previousButton)
+    hide(nextButton)
     show(submitButton)
   }
   
@@ -97,41 +98,27 @@ function show(elem){
 
 function hide(elem){
   elem.classList.add('hidden')
-};
+}
 
 
-		const responseDiv = document.querySelector('#response');
-		const imageContainerDiv = document.querySelector('#image-container');
-
-		form.addEventListener('submit', async (event) => {
-			event.preventDefault();
-			const phone = document.querySelector('#numero-a-consultar').value;
-			if (isNaN(phone)) {
-				responseDiv.innerHTML = 'Phone number must be a number';
-				imageContainerDiv.innerHTML = '';
-				return;
-			}
-			const token = document.querySelector('#tokin').value;
-			const url = `https://whatsapp-scraper.p.rapidapi.com/free/wspicture?phone=${phone}&token=${token}`;
-			const options = {
-				method: 'GET',
-				headers: {
-					'content-type': 'application/octet-stream',
-					'X-RapidAPI-Key': '0b2157bfc4mshe1bc5572ac284d7p17fde2jsnadff8abf693a',
-					'X-RapidAPI-Host': 'whatsapp-scraper.p.rapidapi.com'
-				}
-			};
-			try {
-				const response = await fetch(url, options);
-				const result = await response.text();
-				if (result.includes('Invalid Token')) {
-					responseDiv.innerHTML = 'Your token is either invalid or has expired. You may get a valid token clicking on this link: <a href="https://wa.me/34631428039?text=get-token">https://wa.me/34631428039?text=get-token</a> to send a whatsapp text to +34631428039 with the message get-token';
-					imageContainerDiv.innerHTML = '';
-				} else {
-					responseDiv.innerHTML = result;
-					imageContainerDiv.innerHTML = `<img src="${result}" alt="WhatsApp image" style="max-width: 512px; max-height: 512px;">`;
-				}
-			} catch (error) {
-				console.error(error);
-			}
-		});
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const phone = document.querySelector('#numero-a-consultar').value;
+    const token = document.querySelector('#tokin').value;
+    const url = `https://whatsapp-scraper.p.rapidapi.com/free/wspicture?phone=${phone}&token=${token}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/octet-stream',
+        'X-RapidAPI-Key': '0b2157bfc4mshe1bc5572ac284d7p17fde2jsnadff8abf693a',
+        'X-RapidAPI-Host': 'whatsapp-scraper.p.rapidapi.com'
+      }
+    };
+    try {
+      const response = await fetch(url, options);
+      const result = await response.text();
+      document.getElementById('profile-pic').src = result;
+    } catch (error) {
+      console.error(error);
+    }
+  });
