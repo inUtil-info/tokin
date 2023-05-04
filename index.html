@@ -9,12 +9,12 @@
 </head>
 <body>
   
-   <h1>This demo site shows an API walled garden by tokin</h1>
+   <h1 style="text-align: center;">This site demostrates an API walled garden by tokin</h1>
    <p>
-     Tokin is a cloud service designed by inUtil Labs to verify who is making use of an API. 
+   <a href="https://rapidapi.com/inutil-inutil-default/api/tokin/details">Tokin</a> is a cloud service designed by inUtil Labs to verify who is making use of an API. This is a free demo and is not intended for commercial purposes.
    </p>
    <p>
-     This is a free demo and is not intended for commercial purposes. To use this service, you will need to enter a valid token, which will be provided for free in the second step.
+      To use this service, you will need to enter a valid token, which will be provided for free in the second step.
    </p>
 <!-- partial:index.partial.html -->
 <form id="stepByStepForm" class="form">
@@ -71,13 +71,22 @@
 <!-- partial -->
   <script  src="./script.js"></script>
 
-  <p>
-   The walled garden API shows the whatsapp profile picture fetched on real time, obtained from a public URL that is not protected by login credentials. The picture will be rendered on the box.
- </p>
 
-<div id="result">
-   <img id="profile-pic" src="" alt="Profile Pic">
+
+  <p>
+   The walled garden API shows the whatsapp profile picture fetched on real time, obtained from a public URL that is not protected by login credentials.
+</p>
+
+
+<div id="resp-tokin-container" style="display: none;">
+   The tokin used was requested by: <span id="resp-tokin"></span>
 </div>
-  
+ 
+<div id="result">
+   <img id="profile-pic" src="" alt="Profile Picture will be rendered here">
+</div>
+
+
+
 </body>
 </html>

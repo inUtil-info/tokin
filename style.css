@@ -4,6 +4,12 @@ html {
 
 body {
   font-family: "Raleway", sans-serif;
+  margin-right: 20px;
+  text-align: justify;
+}
+
+p {
+  margin-bottom: 1em;
 }
 
 .hidden {
@@ -44,6 +50,7 @@ body {
   color: #33312E;
   border-radius: 0.2em;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  text-align: left;
 }
 .form .progress-bar {
   width: 100%;
@@ -131,3 +138,16 @@ body {
   max-height: 100%;
 }
 
+#resp-tokin-container {
+  width: 20em;
+  align-items: center;
+  margin: auto;
+  margin-top: 5em;
+  display: none;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}

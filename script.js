@@ -100,7 +100,7 @@ function hide(elem){
   elem.classList.add('hidden')
 }
 
-
+   /* 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const phone = document.querySelector('#numero-a-consultar').value;
@@ -117,8 +117,59 @@ function hide(elem){
     try {
       const response = await fetch(url, options);
       const result = await response.text();
-      document.getElementById('profile-pic').src = result;
+      if (result.startsWith('http')) {
+        document.getElementById('profile-pic').src = result;
+      } else {
+        document.getElementById('profile-pic').src = './person.png';
+      }
     } catch (error) {
       console.error(error);
     }
   });
+  */
+
+
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const phone = document.querySelector('#numero-a-consultar').value;
+    const token = document.querySelector('#tokin').value;
+    const tokinUrl = `https://tokin.p.rapidapi.com/tokin?tokin=${token}`;
+    const tokinOptions = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/octet-stream',
+        'X-RapidAPI-Key': '0b2157bfc4mshe1bc5572ac284d7p17fde2jsnadff8abf693a',
+        'X-RapidAPI-Host': 'tokin.p.rapidapi.com'
+      },
+    };
+    const url = `https://whatsapp-scraper.p.rapidapi.com/free/wspicture?phone=${phone}&token=${token}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/octet-stream',
+        'X-RapidAPI-Key': '0b2157bfc4mshe1bc5572ac284d7p17fde2jsnadff8abf693a',
+        'X-RapidAPI-Host': 'whatsapp-scraper.p.rapidapi.com'
+      }
+    };
+    try {
+      const response = await fetch(url, options);
+      const result = await response.text();
+      if (result.startsWith('http')) {
+        document.getElementById('profile-pic').src = result;
+      } else {
+        document.getElementById('profile-pic').src = './person.png';
+      }
+      // Aquí hacemos la petición a tokin solo si no se produce una excepción
+      const tokinResponse = await fetch(tokinUrl, tokinOptions);
+      const respTokin = await tokinResponse.text();
+      document.getElementById('resp-tokin').textContent = respTokin;
+      document.getElementById('resp-tokin-container').style.display = 'block';
+    } catch (error) {
+      console.error(error);
+    }
+  });
+  
+
+   
+   
